@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>LB2</title>
+
+    <style>
+        .accordion-item {
+            width: 100%;
+        }
+        .accordion-button {
+            width: 100%;
+            background-color: rgb(179, 186, 191);
+            color: black;
+            font-size: 20;
+            border: 0;
+            border: 1px solid darkgray;
+        }
+        .accordion-content {
+            width: 90%;
+            padding: 5;
+            display: none;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 200; background-color: rgb(255, 255, 255); border: 1px solid gray; border-radius: 5;">
+        <div class="accordion-item">
+            <button class="accordion-button">
+                Introduction
+            </button>
+            <div class="accordion-content">
+                This is introduction to the first block of accordion content. Here I need to write some text.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button">
+                General information
+            </button>
+            <div class="accordion-content">
+                Some Introductiona akl dmklasm kdaskld mklamsdk masdm kasm dlkamkl dm
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button">
+                Contact us
+            </button>
+            <div class="accordion-content">
+                Some Introductiona akl dmklasm kdaskld mklamsdk masdm kasm dlkamkl dm
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.accordion-button').forEach(header => {
+          header.addEventListener('click', () => {
+            const accordionContentElement = event.target.nextElementSibling;
+            accordionContentElement.style.display = accordionContentElement.style.display === 'block' ? 'none' : 'block';
+          });
+        });
+      </script>
+</body>
+
+</html>
