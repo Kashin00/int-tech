@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>LB2</title>
+
+    <style>
+        @import url(styles/accordion.css);
+
+        body#main {
+            background-color: azure;
+        }
+
+        .accordion-item {
+            width: 100%;
+        }
+        
+        h1[target="_name"] {
+            border: 1px solid gray;
+        }
+
+        h3[target="_lb_info"] {
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body id="main">
+    <div style="float: left; position: relative; top: 100;">
+        <header>
+            <h1 target="_name">Кашин Матвій<br>КІУКІ-22-4</h1>
+            <h3 target="_lb_info">ЛБ №2<br>Варіант 6</h3>
+        </header>
+    </div>
+    <div style="width: 200; background-color: rgb(255, 255, 255); border: 1px solid gray; border-radius: 5; position: relative; top: 100; margin-left: auto;
+    margin-right: auto;">
+        <div class="accordion-item">
+            <button class="accordion-button">
+                Introduction
+            </button>
+            <div class="accordion-content">
+                This is introduction to the first block of accordion content. Here I need to write some text.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button">
+                General information
+            </button>
+            <div class="accordion-content">
+                Some Introductiona akl dmklasm kdaskld mklamsdk masdm kasm dlkamkl dm
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-button">
+                Contact us
+            </button>
+            <div class="accordion-content">
+                Some Introductiona akl dmklasm kdaskld mklamsdk masdm kasm dlkamkl dm
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelectorAll('.accordion-button').forEach(header => {
+          header.addEventListener('click', () => {
+            const accordionContentElement = event.target.nextElementSibling;
+            accordionContentElement.style.display = accordionContentElement.style.display === 'block' ? 'none' : 'block';
+          });
+        });
+      </script>
+</body>
+
+</html>
