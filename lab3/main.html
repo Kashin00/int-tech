@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="uk">
 
 <head>
@@ -17,6 +17,100 @@
             <h3 id="lb_info">ЛБ №3<br>Варіант 6</h3>
         </header>
     </div>
+
+    <div id="app"> {{ message }} </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        message: "Hello World!"
+      }
+    }
+  })
+
+ app.mount('#app')
+
+</script>
 </body>
 
+</html> -->
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LB 3</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div>
+        <header>
+            <h1 id="name">Кашин Матвій<br>КІУКІ-22-4</h1>
+            <h3 id="lb_info">ЛБ №3<br>Варіант 6</h3>
+        </header>
+    </div>
+
+    <div id="app">
+        <h1>Введіть дані про співробітників</h1>
+        <div v-for="(employee, index) in employees" :key="index">
+            <h3>Співробітник {{ index + 1 }}</h3>
+            <label for="name">Прізвище:</label>
+            <input type="text" v-model="employee.name" id="name">
+            <br>
+            <label for="date">Дата прийому на роботу:</label>
+            <input type="date" v-model="employee.joinDate" id="date">
+            <br><br>
+        </div>
+        
+        <button @click="calculateAverageExperience">Розрахувати середній стаж</button>
+        
+        <div v-if="averageExperience !== null">
+            <h2>Середній стаж: {{ averageExperience }} років</h2>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                employees: [
+                    { name: '', joinDate: '' },
+                    { name: '', joinDate: '' },
+                    { name: '', joinDate: '' },
+                    { name: '', joinDate: '' },
+                    { name: '', joinDate: '' }
+                ],
+                averageExperience: null
+            },
+            methods: {
+                calculateAverageExperience() {
+                    let totalExperience = 0;
+                    let validEntries = 0;
+
+                    const currentDate = new Date();
+
+                    this.employees.forEach(employee => {
+                        if (employee.joinDate) {
+                            const joinDate = new Date(employee.joinDate);
+                            const experienceInMilliseconds = currentDate - joinDate;
+                            const experienceInYears = experienceInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+                            totalExperience += experienceInYears;
+                            validEntries++;
+                        }
+                    });
+
+                    if (validEntries > 0) {
+                        this.averageExperience = Math.floor(totalExperience / validEntries);
+                    } else {
+                        this.averageExperience = 0;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
 </html>
